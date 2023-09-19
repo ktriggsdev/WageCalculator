@@ -13,4 +13,4 @@ Finally, enter your hourly wage without the $ or £ symbols and in price format.
 
 The program will then calculate your weekly, monthly and annual wages
 
-## Thanks for using this program, the program was designed and coded with 💚 by Kieran Triggs, Software Engineer & Python Developer.
+## Thanks for using this program, this program was designed and coded with 💚 by Kieran Triggs, Software Engineer & Python Developer.
