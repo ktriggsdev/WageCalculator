@@ -20,17 +20,55 @@ name = name.lower()
 
 print(f"Name: {name}")
 
-print("What is your hourly wage?")
-wage = float(input("> "))
+# input is requested from the user
 
-print("What do you want to use? d for dollars, p for pounds")
+print("What is your starting wage Type: hourly (h), weekly (w), monthly (m) or annually (a)")
+starting_wage = input("> ")
 
-dollar_pounds = input("> ")
+starting_wage = starting_wage.lower()
 
-dollar_pounds = dollar_pounds.lower()
+# Function to get input from the user on whether to use dollars or pounds:
 
-print(f"Here are your results, {name}")
+def dollarsOrPounds():
+    print("What do you want to use? d for dollars, p for pounds")
 
+    global dollar_pounds
+    
+    dollar_pounds = input("> ")
+
+    dollar_pounds = dollar_pounds.lower()
+
+# Function to get input from the user on what their hourly wage is:
+    
+def wagePerHour():
+    print("What is your hourly wage?")
+    global wage_hour
+    wage_hour = float(input("> "))
+    return wage_hour
+
+# Function to get input from the user on what their weekly wage is:    
+    
+def wagePerWeek():
+    print("What is your Weekly wage?")
+    global wage_week
+    wage_week = float(input("> "))
+    return wage_week
+
+# Function to get input from the user on what their monthly wage is:
+
+def wagePerMonth():
+    print("What is your Monthly wage?")
+    global wage_month
+    wage_month = float(input("> ")) 
+    return wage_month
+
+# Function to get input from the user on what their yearly wage is:
+
+def wagePerYear():
+    print("What is your Annual wage?")
+    global wage_year
+    wage_year = float(input("> "))
+    return wage_year
 
 # Function to print a list of strings in a formatted box:
 
@@ -51,51 +89,152 @@ def printBox(wageList):
     print("+" + bottom + "+")
 
 
-# Function to calculate wage:
+# Function to calculate wage in Hourly Format:
 
-def calculateWage():
-    if dollar_pounds == 'p':
+def calculateWageHourly():
+    if dollar_pounds == "p":
+        wage_per_week = wage_hour * 7
+        wage_per_month = wage_per_week * 4
+        wage_per_year = wage_per_month * 12
+
+        wage_list = [
+            f"Your Hourly Wage: £{wage_hour:.2f} Hourly",
+            f"Your Weekly Wage: £{wage_per_week:.2f} Weekly",
+            f"Your Monthly Wage: £{wage_per_month:.2f} Monthly",
+            f"Your Annual Wage: £{wage_per_year:.2f} Annually",
+        ]
+
+    elif dollar_pounds == "d":
+        wage_per_week = wage_hour * 7
+        wage_per_month = wage_per_week * 4
+        wage_per_year = wage_per_month * 12
+
+        wage_list = [
+            f"Your Hourly Wage: ${wage_hour:.2f} Hourly",
+            f"Your Weekly Wage: ${wage_per_week:.2f} Weekly",
+            f"Your Monthly Wage: ${wage_per_month:.2f} Monthly",
+            f"Your Annual Wage: ${wage_per_year:.2f} Annually",
+        ]
+
+    printBox(wage_list)
+
+# Function to calculate wage in Weekly Format:    
     
-        hourlyWage = f"Your Hourly Wage: £{wage:.2f} Hourly"
-        
-        wage_per_week = wage * 7
-
-        weeklyWage = f"Your Weekly Wage: £{wage_per_week:.2f} Weekly"
-        
+def calculateWageWeekly():
+    if dollar_pounds == "p":
+        wage_per_week = wage_week
+        wage_per_hour = wage_per_week / 40
         wage_per_month = wage_per_week * 4
-
-        monthlyWage = f"Your Monthly Wage: £{wage_per_month:.2f} Monthly"
-        
         wage_per_year = wage_per_month * 12
 
-        annualWage = f"Your Annual Wage: £{wage_per_year:.2f} Annually"
+        wage_list = [
+            f"Your Hourly Wage: £{wage_per_week:.2f} Weekly",
+            f"Your Weekly Wage: £{wage_per_hour:.2f} Hourly",
+            f"Your Monthly Wage: £{wage_per_month:.2f} Monthly",
+            f"Your Annual Wage: £{wage_per_year:.2f} Annually",
+        ]
 
-        # Create a list of strings containing the hourly wage, weekly wage, monthly wage, and annual wage:
-        wageList = [hourlyWage, weeklyWage, monthlyWage, annualWage]
-
-        # Call the printBox() function to print out the list of strings in a formatted box:
-        printBox(wageList)
-        
-    elif dollar_pounds  == 'd':
-        hourlyWage = f"Your Hourly Wage: ${wage:.2f} Hourly"
-        
-        wage_per_week = wage * 7
-
-        weeklyWage = f"Your Weekly Wage: ${wage_per_week:.2f} Weekly"
-        
+    elif dollar_pounds == "d":
+        wage_per_week = wage_week
+        wage_per_hour = wage_per_week / 40
         wage_per_month = wage_per_week * 4
-
-        monthlyWage = f"Your Monthly Wage: ${wage_per_month:.2f} Monthly"
-        
         wage_per_year = wage_per_month * 12
 
-        annualWage = f"Your Annual Wage: ${wage_per_year:.2f} Annually"
+        wage_list = [
+            f"Your Hourly Wage: ${wage_per_week:.2f} Weekly",
+            f"Your Weekly Wage: ${wage_per_hour:.2f} Hourly",
+            f"Your Monthly Wage: ${wage_per_month:.2f} Monthly",
+            f"Your Annual Wage: ${wage_per_year:.2f} Annually",
+        ]
 
-        # Create a list of strings containing the hourly wage, weekly wage, monthly wage, and annual wage:
-        wageList = [hourlyWage, weeklyWage, monthlyWage, annualWage]
+    printBox(wage_list)
 
-        # Call the printBox() function to print out the list of strings in a formatted box:
-        printBox(wageList)
+# Function to calculate wage in Monthly Format:
 
+def calculateWageMonthly():
+    if dollar_pounds == "p":
+        wage_per_month = wage_month
+        wage_per_week = wage_per_month / 4
+        wage_per_hour = wage_per_week / 40
+        wage_per_year = wage_per_month * 12
 
-calculateWage()
+        wage_list = [
+            f"Your Hourly Wage: £{wage_per_month:.2f} Monthly",
+            f"Your Weekly Wage: £{wage_per_week:.2f} Weekly",
+            f"Your Monthly Wage: £{wage_per_hour:.2f} Hourly",
+            f"Your Annual Wage: £{wage_per_year:.2f} Annually",
+        ]
+
+    elif dollar_pounds == "d":
+        wage_per_month = wage_month
+        wage_per_week = wage_per_month / 4
+        wage_per_hour = wage_per_week / 40
+        wage_per_year = wage_per_month * 12
+
+        wage_list = [
+            f"Your Hourly Wage: ${wage_per_month:.2f} Monthly",
+            f"Your Weekly Wage: ${wage_per_week:.2f} Weekly",
+            f"Your Monthly Wage: ${wage_per_hour:.2f} Hourly",
+            f"Your Annual Wage: ${wage_per_year:.2f} Annually",
+        ]
+
+    printBox(wage_list)
+
+# Function to calculate wage in Annual Format:
+
+def calculateWageAnnually():
+    if dollar_pounds == "p":
+        wage_per_year = wage_year
+        wage_per_month = wage_per_year / 12
+        wage_per_week = wage_per_month / 4
+        wage_per_hour = wage_per_week / 40
+
+        wage_list = [
+            f"Your Hourly Wage: £{wage_per_year:.2f} Annually",
+            f"Your Weekly Wage: £{wage_per_month:.2f} Monthly",
+            f"Your Monthly Wage: £{wage_per_week:.2f} Weekly",
+            f"Your Annual Wage: £{wage_per_hour:.2f} Hourly",
+        ]
+
+    elif dollar_pounds == "d":
+        wage_per_year = wage_year
+        wage_per_month = wage_per_year / 12
+        wage_per_week = wage_per_month / 4
+        wage_per_hour = wage_per_week / 40
+
+        wage_list = [
+            f"Your Hourly Wage: ${wage_per_year:.2f} Annually",
+            f"Your Weekly Wage: ${wage_per_month:.2f} Monthly",
+            f"Your Monthly Wage: ${wage_per_week:.2f} Weekly",
+            f"Your Annual Wage: ${wage_per_hour:.2f} Hourly",
+        ]
+
+    printBox(wage_list)
+
+# if statement to determine what mode is chosen for the starting wage
+
+if starting_wage == "h":
+    dollarsOrPounds()
+    wagePerHour()
+    print(f"Here are your results, {name}")
+    calculateWageHourly()
+    
+    
+elif starting_wage == "w":
+    dollarsOrPounds()
+    wagePerWeek()
+    print(f"Here are your results, {name}")
+    calculateWageWeekly()
+    
+    
+elif starting_wage == "m":
+    dollarsOrPounds()
+    wagePerMonth()
+    print(f"Here are your results, {name}")
+    calculateWageMonthly()
+    
+elif starting_wage == "a":
+    dollarsOrPounds()
+    wagePerYear()
+    print(f"Here are your results, {name}")
+    calculateWageAnnually()
