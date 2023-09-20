@@ -36,14 +36,14 @@ starting_wage = starting_wage.lower()
 # Function to get input from the user on whether to use dollars or pounds
 # input is also requested from the user to store that input in the variable "dollar_pounds":/
 
-def dollarsOrPounds():
+def currency_type():
     print("What do you want to use? d for dollars, p for pounds")
 
-    global dollar_pounds
+    global currency
     
-    dollar_pounds = input("> ")
+    currency = input("> ")
 
-    dollar_pounds = dollar_pounds.lower()
+    currency = currency.lower()
 
 # Function to get input from the user on what their hourly wage is
 # input is also requested from the user to store that input in the variable "wage_hour":
@@ -107,7 +107,7 @@ def printBox(wageList):
 # return the weekly rate, monthly rate and annual rate etc.
 
 def calculateWageHourly():
-    if dollar_pounds == "p":
+    if currency == "p":
         wage_per_week = wage_hour * 7
         wage_per_month = wage_per_week * 4
         wage_per_year = wage_per_month * 12
@@ -119,7 +119,7 @@ def calculateWageHourly():
             f"Your Annual Wage: £{wage_per_year:.2f} Annually",
         ]
 
-    elif dollar_pounds == "d":
+    elif currency == "d":
         wage_per_week = wage_hour * 7
         wage_per_month = wage_per_week * 4
         wage_per_year = wage_per_month * 12
@@ -136,7 +136,7 @@ def calculateWageHourly():
 # Function to calculate wage in Weekly Format:    
     
 def calculateWageWeekly():
-    if dollar_pounds == "p":
+    if currency == "p":
         wage_per_week = wage_week
         wage_per_hour = wage_per_week / 40
         wage_per_month = wage_per_week * 4
@@ -149,7 +149,7 @@ def calculateWageWeekly():
             f"Your Annual Wage: £{wage_per_year:.2f} Annually",
         ]
 
-    elif dollar_pounds == "d":
+    elif currency == "d":
         wage_per_week = wage_week
         wage_per_hour = wage_per_week / 40
         wage_per_month = wage_per_week * 4
@@ -167,7 +167,7 @@ def calculateWageWeekly():
 # Function to calculate wage in Monthly Format:
 
 def calculateWageMonthly():
-    if dollar_pounds == "p":
+    if currency == "p":
         wage_per_month = wage_month
         wage_per_week = wage_per_month / 4
         wage_per_hour = wage_per_week / 40
@@ -180,7 +180,7 @@ def calculateWageMonthly():
             f"Your Annual Wage: £{wage_per_year:.2f} Annually",
         ]
 
-    elif dollar_pounds == "d":
+    elif currency == "d":
         wage_per_month = wage_month
         wage_per_week = wage_per_month / 4
         wage_per_hour = wage_per_week / 40
@@ -198,7 +198,7 @@ def calculateWageMonthly():
 # Function to calculate wage in Annual Format:
 
 def calculateWageAnnually():
-    if dollar_pounds == "p":
+    if currency == "p":
         wage_per_year = wage_year
         wage_per_month = wage_per_year / 12
         wage_per_week = wage_per_month / 4
@@ -211,7 +211,7 @@ def calculateWageAnnually():
             f"Your Annual Wage: £{wage_per_hour:.2f} Hourly",
         ]
 
-    elif dollar_pounds == "d":
+    elif currency == "d":
         wage_per_year = wage_year
         wage_per_month = wage_per_year / 12
         wage_per_week = wage_per_month / 4
@@ -231,27 +231,27 @@ def calculateWageAnnually():
 # if statement to determine what mode is chosen for the starting wage
 
 if starting_wage == "h":
-    dollarsOrPounds()
+    currency_type()
     wagePerHour()
     print(f"Here are your results, {name}")
     calculateWageHourly()
     
     
 elif starting_wage == "w":
-    dollarsOrPounds()
+    currency_type()
     wagePerWeek()
     print(f"Here are your results, {name}")
     calculateWageWeekly()
     
     
 elif starting_wage == "m":
-    dollarsOrPounds()
+    currency_type()
     wagePerMonth()
     print(f"Here are your results, {name}")
     calculateWageMonthly()
     
 elif starting_wage == "a":
-    dollarsOrPounds()
+    currency_type()
     wagePerYear()
     print(f"Here are your results, {name}")
     calculateWageAnnually()
