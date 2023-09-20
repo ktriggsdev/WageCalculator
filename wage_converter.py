@@ -34,7 +34,7 @@ starting_wage = starting_wage.lower()
 # <------ FUNCTIONS ----->
 
 # Function to get input from the user on whether to use dollars or pounds
-# input is also requested from the user to store that input in the variable "dollar_pounds":/
+# input is also requested from the user to store that input in the variable "currency":/
 
 def currency_type():
     print("What do you want to use? d for dollars, p for pounds")
