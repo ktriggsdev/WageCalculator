@@ -14,7 +14,8 @@ Thanks for using this program, the program was designed and coded with 💚 by K
 """
 print(docstring)
 
-# input is requested from the user:
+# <-------- BASIC INPUTS -------->
+# name is requested and the person's name is then stored in the variable "name":
 
 print("Hello, what is your name?")
 name = input("> ")
@@ -23,14 +24,17 @@ name = name.lower()
 
 print(f"Name: {name}")
 
-# input is requested from the user
+# starting wage is requested and the person's starting wage type is stored in the variable "starting_wage":
 
 print("What is your starting wage Type: hourly (h), weekly (w), monthly (m) or annually (a)")
 starting_wage = input("> ")
 
 starting_wage = starting_wage.lower()
 
-# Function to get input from the user on whether to use dollars or pounds:
+# <------ FUNCTIONS ----->
+
+# Function to get input from the user on whether to use dollars or pounds
+# input is also requested from the user to store that input in the variable "dollar_pounds":/
 
 def dollarsOrPounds():
     print("What do you want to use? d for dollars, p for pounds")
@@ -41,7 +45,8 @@ def dollarsOrPounds():
 
     dollar_pounds = dollar_pounds.lower()
 
-# Function to get input from the user on what their hourly wage is:
+# Function to get input from the user on what their hourly wage is
+# input is also requested from the user to store that input in the variable "wage_hour":
     
 def wagePerHour():
     print("What is your hourly wage?")
@@ -49,7 +54,8 @@ def wagePerHour():
     wage_hour = float(input("> "))
     return wage_hour
 
-# Function to get input from the user on what their weekly wage is:    
+# Function to get input from the user on what their weekly wage is
+# input is also requested from the user to store that input in the variable "wage_week":
     
 def wagePerWeek():
     print("What is your Weekly wage?")
@@ -57,7 +63,8 @@ def wagePerWeek():
     wage_week = float(input("> "))
     return wage_week
 
-# Function to get input from the user on what their monthly wage is:
+# Function to get input from the user on what their monthly wage is
+# input is also requested from the user to store that input in the variable "wage_month":
 
 def wagePerMonth():
     print("What is your Monthly wage?")
@@ -65,7 +72,8 @@ def wagePerMonth():
     wage_month = float(input("> ")) 
     return wage_month
 
-# Function to get input from the user on what their yearly wage is:
+# Function to get input from the user on what their yearly wage is
+# input is also requested from the user to store that input in the variable "wage_year":
 
 def wagePerYear():
     print("What is your Annual wage?")
@@ -74,6 +82,7 @@ def wagePerYear():
     return wage_year
 
 # Function to print a list of strings in a formatted box:
+# PRINTS BOX AROUND THE LIST OF STRINGS FOR AESTHETIC REASONS
 
 def printBox(wageList):
     # Calculate the maximum length of any string in the list:
@@ -93,6 +102,9 @@ def printBox(wageList):
 
 
 # Function to calculate wage in Hourly Format:
+# This changes based on what the starting wage is, so if weekly wage is selected it would
+# return the hourly rate, monthly rate and annual rate, if hourly wage is selected it would
+# return the weekly rate, monthly rate and annual rate etc.
 
 def calculateWageHourly():
     if dollar_pounds == "p":
@@ -213,6 +225,8 @@ def calculateWageAnnually():
         ]
 
     printBox(wage_list)
+
+# <----- DISPLAY RESULTS ----->
 
 # if statement to determine what mode is chosen for the starting wage
 
